@@ -8,16 +8,12 @@ import {
   useRef,
   useState,
 } from "react";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import {
-  type Mensaje,
   adjuntoEsPdf,
   formatFechaCompleta,
   formatRelative,
+  type Mensaje,
 } from "@/lib/cartelera";
 import { cn } from "@/lib/utils";
 
@@ -65,8 +61,8 @@ export function AnuncioCard({ mensaje }: AnuncioCardProps) {
 
   return (
     <>
-      {/* biome-ignore lint/a11y/useSemanticElements: <article> con role=button es la forma correcta cuando el contenido tiene links internos interactivos */}
-      <article
+      {/* biome-ignore lint/a11y/useSemanticElements: the whole card opens the notice modal while its body keeps inner links; restructuring it is tracked in the accessibility audit (epic E05) */}
+      <div
         role="button"
         tabIndex={0}
         aria-label={`Ver completo: ${mensaje.titulo}`}
@@ -159,7 +155,7 @@ export function AnuncioCard({ mensaje }: AnuncioCardProps) {
             Ver completo →
           </span>
         </footer>
-      </article>
+      </div>
 
       <AnuncioModal
         mensaje={mensaje}
@@ -227,7 +223,9 @@ export function AnuncioModal({
               {mensaje.titulo}
             </DialogTitle>
 
-            <p className="text-sm font-medium text-primary">{mensaje.materia}</p>
+            <p className="text-sm font-medium text-primary">
+              {mensaje.materia}
+            </p>
 
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground">
               <span className="inline-flex items-center gap-1.5">

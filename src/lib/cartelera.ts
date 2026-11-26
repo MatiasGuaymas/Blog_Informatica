@@ -85,7 +85,9 @@ function transformMensaje(raw: MensajeRaw): Mensaje {
     fechaRaw: raw.fecha,
     autor: raw.autor,
     isAnulado: raw.is_anulado,
-    fechaAnulacion: raw.fecha_anulacion ? parseFecha(raw.fecha_anulacion) : null,
+    fechaAnulacion: raw.fecha_anulacion
+      ? parseFecha(raw.fecha_anulacion)
+      : null,
     adjuntos: raw.adjuntos,
     carreras: carrerasDeMateria(raw.materia),
   };
@@ -154,7 +156,10 @@ function sanitizeCuerpo(html: string): string {
     // Permitir colors/font-size básicos, cortar absolute positioning.
     allowedStyles: {
       "*": {
-        color: [/^#(0x)?[0-9a-f]+$/i, /^rgb\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)$/],
+        color: [
+          /^#(0x)?[0-9a-f]+$/i,
+          /^rgb\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)$/,
+        ],
         "background-color": [/^#(0x)?[0-9a-f]+$/i, /^rgb\(/i],
         "font-size": [/^\d+(?:px|em|rem|%)$/],
         "font-weight": [/^\d+$/, /^(bold|normal)$/],
@@ -301,7 +306,8 @@ export function aplicarFiltros(
 
     if (f.materia && m.materia !== f.materia) return false;
 
-    if (f.carrera && !m.carreras.some((c) => c.slug === f.carrera)) return false;
+    if (f.carrera && !m.carreras.some((c) => c.slug === f.carrera))
+      return false;
 
     if (dias !== null) {
       const diff = (now.getTime() - m.fecha.getTime()) / 86_400_000;
@@ -309,7 +315,8 @@ export function aplicarFiltros(
     }
 
     if (q) {
-      const haystack = `${m.titulo} ${m.materia} ${m.autor} ${stripHtml(m.cuerpoHtml)}`.toLowerCase();
+      const haystack =
+        `${m.titulo} ${m.materia} ${m.autor} ${stripHtml(m.cuerpoHtml)}`.toLowerCase();
       if (!haystack.includes(q)) return false;
     }
 

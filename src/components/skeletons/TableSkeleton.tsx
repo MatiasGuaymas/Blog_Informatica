@@ -16,7 +16,6 @@ export function TableSkeleton({
   className = "",
 }: TableSkeletonProps) {
   return (
-    // biome-ignore lint/a11y/useSemanticElements: role="status" is appropriate for loading indicators
     <div
       className={["animate-pulse", className].filter(Boolean).join(" ")}
       role="status"

@@ -1,4 +1,10 @@
-import { ArrowRight, BookOpen, Clock, ExternalLink, Layers } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  Clock,
+  ExternalLink,
+  Layers,
+} from "lucide-react";
 import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
 import { StaggerList } from "@/components/motion/StaggerList";

@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import "./globals.css";
 import { NavigationLoadingProvider } from "@/components/NavigationLoadingProvider";
 import { Toaster } from "@/components/ui/toast";
-import { SITE, absoluteUrl } from "@/lib/site";
+import { absoluteUrl, SITE } from "@/lib/site";
 
 const poppins = Poppins({
   variable: "--font-poppins",

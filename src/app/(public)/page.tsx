@@ -6,19 +6,19 @@ import {
   Compass,
   Info,
   Library,
+  type LucideIcon,
   MessagesSquare,
   Newspaper,
   Sparkles,
-  type LucideIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
 import { StaggerList } from "@/components/motion/StaggerList";
 import { type Carrera, carreras } from "@/lib/carreras";
 import {
-  type Mensaje,
   fetchCartelera,
   formatRelative,
+  type Mensaje,
   mensajeId,
 } from "@/lib/cartelera";
 import { cn } from "@/lib/utils";
@@ -92,8 +92,8 @@ function HeroSection() {
         <p className="max-w-prose text-lg leading-relaxed text-muted-foreground sm:text-xl">
           Todo lo que necesitás para cursar las carreras de la Facultad de
           Informática UNLP en un solo lugar: planes de estudio, cartelera en
-          vivo, calendario, bibliografía, material y recomendaciones para
-          cada cursada.
+          vivo, calendario, bibliografía, material y recomendaciones para cada
+          cursada.
         </p>
       </section>
     </Reveal>

@@ -8,6 +8,14 @@ Every entry ends with its pull request number and the GitHub handle of its autho
 
 ## [Unreleased]
 
+### Changed
+
+- Formatted the codebase with Biome (2-space indentation) and sorted imports consistently. #1 @MatiasGuaymas
+
+### Fixed
+
+- Screen readers now announce the loading indicator and the calendar category dots, and `pnpm lint` passes with no errors. #1 @MatiasGuaymas
+
 ## [0.1.0] - 2026-11-26
 
 Baseline release: the site as deployed to production when the team started

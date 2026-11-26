@@ -5,8 +5,8 @@ import { CarteleraFilters } from "@/components/cartelera/CarteleraFilters";
 import { CarteleraPagination } from "@/components/cartelera/CarteleraPagination";
 import { Reveal } from "@/components/motion/Reveal";
 import {
-  type FiltrosCartelera,
   aplicarFiltros,
+  type FiltrosCartelera,
   fetchCartelera,
   listarMaterias,
   mensajeId,
@@ -83,8 +83,8 @@ export default async function CarteleraPage({ searchParams }: PageProps) {
           </h1>
           <p className="max-w-prose text-muted-foreground">
             Lo último que publicaron las cátedras: cambios de fecha, mesas de
-            final, parciales, links, PDFs y todo lo que se anuncia desde
-            gestión docente.
+            final, parciales, links, PDFs y todo lo que se anuncia desde gestión
+            docente.
           </p>
           <p className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
             <span>Se actualiza cada 5 minutos.</span>
@@ -106,7 +106,11 @@ export default async function CarteleraPage({ searchParams }: PageProps) {
         <CarteleraFilters materias={materiasUnicas} />
       </Reveal>
 
-      <ResultadosHeader total={filtrados.length} page={page} totalPages={totalPages} />
+      <ResultadosHeader
+        total={filtrados.length}
+        page={page}
+        totalPages={totalPages}
+      />
 
       {visibles.length === 0 ? (
         <EmptyState />
@@ -145,8 +149,7 @@ function ResultadosHeader({
   if (total === 0) return null;
   return (
     <p className="text-xs text-muted-foreground">
-      Mostrando{" "}
-      <span className="font-semibold text-foreground">{total}</span>{" "}
+      Mostrando <span className="font-semibold text-foreground">{total}</span>{" "}
       {total === 1 ? "resultado" : "resultados"}
       {totalPages > 1 && (
         <>
@@ -166,9 +169,7 @@ function EmptyState() {
     <div className="flex flex-col items-center gap-3 rounded-2xl border border-dashed border-border bg-card/40 p-10 text-center">
       <MegaphoneOff className="h-8 w-8 text-muted-foreground" />
       <div>
-        <p className="text-sm font-semibold text-foreground">
-          Sin resultados
-        </p>
+        <p className="text-sm font-semibold text-foreground">Sin resultados</p>
         <p className="text-xs text-muted-foreground">
           Probá ampliar el rango de fechas o sacar algunos filtros.
         </p>
