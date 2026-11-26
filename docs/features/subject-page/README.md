@@ -6,7 +6,7 @@
 |---|---|
 | **Routes** | `/materia/[slug]` (25 slugs) |
 | **Status** | Live since v0.1.0 |
-| **Key files** | [materia/[slug]/page.tsx](../../../src/app/(public)/materia/[slug]/page.tsx), [carreras.ts](../../../src/lib/carreras.ts), [Breadcrumb.tsx](../../../src/components/Breadcrumb.tsx), [sitemap.ts](../../../src/app/sitemap.ts) |
+| **Key files** | [materia/[slug]/page.tsx](../../../src/app/(public)/materia/[slug]/page.tsx), [carreras.ts](../../../src/lib/carreras.ts), [materia-detail.ts](../../../src/lib/materia-detail.ts), [Breadcrumb.tsx](../../../src/components/Breadcrumb.tsx), [sitemap.ts](../../../src/app/sitemap.ts) |
 
 ## Why it exists
 
@@ -77,19 +77,24 @@ Scenario: Summary and recommendations
   And a "Recomendaciones" (recommendations) section shows the advice
 
 Scenario: Summary only
-  Given SI107 has a resumen, an empty recomendaciones and no links
+  Given SI107 has only a resumen
   When "/materia/taller" renders
-  Then the summary appears and neither "Recomendaciones" nor "Material" (material) is shown
+  Then the summary appears and no notes section is shown
 
 Scenario: Nothing written yet
   Given SI203 has no materiaDetails entry
   When "/materia/ayed" renders
   Then a "Notas en preparación" (notes in progress) box takes the place of the notes sections
 
-Scenario: Material links
-  Given a subject whose materiaDetails entry has links
+Scenario: Every filled field gets its section, in order
+  Given a subject whose entry fills modalidad, material, miOpinion, recomendaciones, bibliografia, estructuraMaterial and links
   When its page renders
-  Then a "Material" section lists each link with an external-link icon, and each opens in a new tab
+  Then the sections appear in this order: "Modalidad", "Material", "Mi opinión", "Recomendaciones", "Bibliografía", "Estructura del material", "Links útiles"
+
+Scenario: Study material versus other links
+  Given a subject whose entry has material links and other links
+  When its page renders
+  Then "Material" lists the study material and "Links útiles" (useful links) lists the other links, each opening in a new tab
 ```
 
 ### US-SUB-04 - Careers that include the subject
@@ -150,7 +155,7 @@ Scenario: Back link ignores the origin
 - `getCodigoBySlug(slug)` resolves the code with a linear search over `materiaSlugs`. There is no case folding.
 - `findPlanRow(code)` returns the first matching row, checking careers in the order APU, ATIC, LS, LI. Prerequisites are identical across careers for every registered subject, so the choice of row does not change the page.
 - `getMateriaDetail(code)` reads `materiaDetails`, and `getCarrerasContaining(code)` lists the careers whose plan contains the code.
-- `hasContent` is true when the detail has a non-empty `resumen`, a non-empty `recomendaciones` or at least one link. Without content, the page renders the `ContenidoEnPreparacion` placeholder.
+- `hasContent` is true when any field of [`MateriaDetail`](../../../src/lib/materia-detail.ts) has content: non-empty text or a non-empty list. Without content, the page renders the `ContenidoEnPreparacion` placeholder.
 - Prerequisite names come from `findPlanRow(code)?.nombre`, falling back to the code. The label is "Correlativa:" for one prerequisite and "Correlativas:" for more.
 
 Page layout, top to bottom:
@@ -158,9 +163,8 @@ Page layout, top to bottom:
 1. Back link "Carreras" to `/carreras`.
 2. Header: code, name (`h1`), summary when present, duration chip, prerequisite line when there are prerequisites.
 3. "Notas en preparación" box, only without content.
-4. "Recomendaciones" section, only with recommendation text.
-5. "Material" section, only with links.
-6. "Aparece en el plan de" chips, each linking to `/carreras/<slug>`.
+4. One section per filled field, in this order: "Modalidad" (format), "Material" (study material links), "Mi opinión" (my take), "Recomendaciones" (recommendations), "Bibliografía" (bibliography), "Estructura del material" (how the material is organized) and "Links útiles" (useful links). `ProseSection` renders text and keeps the line breaks of the source (`whitespace-pre-line`); `LinkListSection` renders link lists that open in a new tab.
+5. "Aparece en el plan de" chips, each linking to `/carreras/<slug>`.
 
 The header breadcrumb, shown from 640 px, reads "Materia" (subject) as plain text, because `/materia` has no page, followed by the slug in capitals, for example "CADP".
 
@@ -173,7 +177,7 @@ flowchart TD
   code -- "yes" --> row{"findPlanRow returns a row?"}
   row -- "no" --> nf
   row -- "yes" --> load["Read materiaDetails and getCarrerasContaining"]
-  load --> has{"resumen, recomendaciones or links?"}
+  load --> has{"any MateriaDetail field?"}
   has -- "yes" --> full["Header plus written sections"]
   has -- "no" --> ph["Header plus placeholder box"]
   full --> chips["Career chips"]
@@ -217,7 +221,7 @@ The 25 registered subjects:
 | Registered slug with notes | Header plus the written sections; today `mat1`, `cadp` and `taller` |
 | Registered slug without notes | Header plus "Notas en preparación"; 22 of the 25 slugs |
 | Unknown slug, uppercase slug or a code | The 404 screen "Página no encontrada", rendered without the sidebar and header |
-| Detail with links | A "Material" section; no subject has links today |
+| Detail with links | "Material" for study material and "Links útiles" for other links; no subject has links today |
 
 - No loading or error state: every page is prerendered from static data. Client navigations show the top progress bar.
 - Responsive: a single column capped at `max-w-3xl`; the heading grows from `text-3xl` to `text-4xl` at 640 px; career chips wrap. The breadcrumb is hidden below 640 px, while the back link is always visible.

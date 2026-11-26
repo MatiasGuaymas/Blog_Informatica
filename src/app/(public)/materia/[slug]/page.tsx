@@ -57,14 +57,19 @@ export default async function MateriaDetailPage({
   const detail = getMateriaDetail(codigo);
   const apareceEn = getCarrerasContaining(row.codigo);
 
-  // El detalle editorial es opcional: si todavía no escribí resumen para
-  // esta materia, mostramos el header igual (con código, nombre,
-  // correlativas, dónde aparece) y un placeholder amistoso en lugar del
-  // bloque de resumen / recomendaciones / material. Eso permite que la URL
-  // sea estable desde el día uno y que ir agregando contenido sea aditivo.
+  // El detalle editorial es opcional: si todavía no escribí contenido
+  // para esta materia, mostramos el header igual (con código, nombre,
+  // correlativas, dónde aparece) y un placeholder amistoso en lugar de
+  // las secciones. Eso permite que la URL sea estable desde el día uno
+  // y que ir agregando contenido sea aditivo.
   const hasContent = Boolean(
     detail?.resumen ||
+      detail?.modalidad ||
+      (detail?.material && detail.material.length > 0) ||
+      detail?.miOpinion ||
       detail?.recomendaciones ||
+      (detail?.bibliografia && detail.bibliografia.length > 0) ||
+      detail?.estructuraMaterial ||
       (detail?.links && detail.links.length > 0),
   );
 
@@ -110,36 +115,44 @@ export default async function MateriaDetailPage({
 
       {!hasContent && <ContenidoEnPreparacion />}
 
-      {detail?.recomendaciones && (
-        <section className="space-y-3">
-          <h2 className="text-xl font-semibold text-foreground">
-            Recomendaciones
-          </h2>
-          <p className="max-w-prose leading-relaxed text-muted-foreground">
-            {detail.recomendaciones}
-          </p>
-        </section>
+      {detail?.modalidad && (
+        <ProseSection title="Modalidad" text={detail.modalidad} />
       )}
 
-      {detail?.links && detail.links.length > 0 && (
+      {detail?.material && detail.material.length > 0 && (
+        <LinkListSection title="Material" links={detail.material} />
+      )}
+
+      {detail?.miOpinion && (
+        <ProseSection title="Mi opinión" text={detail.miOpinion} />
+      )}
+
+      {detail?.recomendaciones && (
+        <ProseSection title="Recomendaciones" text={detail.recomendaciones} />
+      )}
+
+      {detail?.bibliografia && detail.bibliografia.length > 0 && (
         <section className="space-y-3">
-          <h2 className="text-xl font-semibold text-foreground">Material</h2>
-          <ul className="space-y-2">
-            {detail.links.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 text-primary transition-colors hover:underline"
-                >
-                  {link.label}
-                  <ExternalLink className="h-3.5 w-3.5" />
-                </a>
-              </li>
+          <h2 className="text-xl font-semibold text-foreground">
+            Bibliografía
+          </h2>
+          <ul className="list-disc space-y-1 pl-5 leading-relaxed text-muted-foreground">
+            {detail.bibliografia.map((b) => (
+              <li key={b}>{b}</li>
             ))}
           </ul>
         </section>
+      )}
+
+      {detail?.estructuraMaterial && (
+        <ProseSection
+          title="Estructura del material"
+          text={detail.estructuraMaterial}
+        />
+      )}
+
+      {detail?.links && detail.links.length > 0 && (
+        <LinkListSection title="Links útiles" links={detail.links} />
       )}
 
       {apareceEn.length > 0 && (
@@ -164,6 +177,46 @@ export default async function MateriaDetailPage({
         </section>
       )}
     </article>
+  );
+}
+
+function ProseSection({ title, text }: { title: string; text: string }) {
+  return (
+    <section className="space-y-3">
+      <h2 className="text-xl font-semibold text-foreground">{title}</h2>
+      <p className="max-w-prose whitespace-pre-line leading-relaxed text-muted-foreground">
+        {text}
+      </p>
+    </section>
+  );
+}
+
+function LinkListSection({
+  title,
+  links,
+}: {
+  title: string;
+  links: { label: string; href: string }[];
+}) {
+  return (
+    <section className="space-y-3">
+      <h2 className="text-xl font-semibold text-foreground">{title}</h2>
+      <ul className="space-y-2">
+        {links.map((link) => (
+          <li key={link.href}>
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 text-primary transition-colors hover:underline"
+            >
+              {link.label}
+              <ExternalLink className="h-3.5 w-3.5" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
 
