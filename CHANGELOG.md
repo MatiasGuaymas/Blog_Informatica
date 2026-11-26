@@ -8,6 +8,8 @@ Every entry ends with its pull request number and the GitHub handle of its autho
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-11-26
+
 ### Added
 
 - English documentation: README, CONTRIBUTING and SECURITY; architecture with diagrams; ten feature pages with user stories, Gherkin acceptance criteria and use cases; guides for setup, git workflow, tasks, specs, Claude Code, design and releases; decision records, epic briefs and a glossary. #59 @MatiasGuaymas
@@ -50,5 +52,6 @@ tracking its work in this repository.
 - SEO baseline: per-page metadata, JSON-LD, dynamic Open Graph image, sitemap, robots, PWA manifest, favicon and app icons. @MatiasGuaymas
 - Responsive shell: desktop sidebar, mobile drawer, header with breadcrumbs, dark mode and a navigation progress bar. @MatiasGuaymas
 
-[Unreleased]: https://github.com/MatiasGuaymas/Blog_Informatica/compare/v0.1.0...dev
+[Unreleased]: https://github.com/MatiasGuaymas/Blog_Informatica/compare/v0.2.0...dev
+[0.2.0]: https://github.com/MatiasGuaymas/Blog_Informatica/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/MatiasGuaymas/Blog_Informatica/releases/tag/v0.1.0
