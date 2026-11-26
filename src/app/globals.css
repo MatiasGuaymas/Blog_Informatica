@@ -1,0 +1,1117 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+  /* Brand colors - light theme: blue + pastel surfaces */
+  --background: oklch(0.99 0.008 240);
+  --foreground: oklch(0.18 0.025 245);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.025 245);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.025 245);
+  --primary: oklch(0.55 0.18 245);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.94 0.04 240);
+  --secondary-foreground: oklch(0.32 0.12 245);
+  --muted: oklch(0.96 0.025 240);
+  --muted-foreground: oklch(0.5 0.04 240);
+  --accent: oklch(0.92 0.06 240);
+  --accent-foreground: oklch(0.32 0.12 245);
+  --destructive: oklch(0.62 0.18 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.91 0.03 240);
+  --input: oklch(0.91 0.03 240);
+  --ring: oklch(0.6 0.14 245);
+  --radius: 0.625rem;
+  /* Custom tokens */
+  --primary-weak: oklch(0.88 0.07 240);
+  --success: oklch(0.7 0.15 160);
+  --warning: oklch(0.82 0.13 80);
+  /* Pastel accents for badges, dots, soft highlights */
+  --pastel-blue: oklch(0.92 0.06 240);
+  --pastel-mint: oklch(0.92 0.06 165);
+  --pastel-rose: oklch(0.92 0.06 15);
+  --pastel-amber: oklch(0.94 0.07 80);
+  /* Chart colors - blue-leaning palette */
+  --chart-1: oklch(0.6 0.16 245);
+  --chart-2: oklch(0.65 0.13 200);
+  --chart-3: oklch(0.7 0.13 165);
+  --chart-4: oklch(0.78 0.12 80);
+  --chart-5: oklch(0.66 0.16 320);
+  /* Sidebar */
+  --sidebar: oklch(0.97 0.015 240);
+  --sidebar-foreground: oklch(0.18 0.025 245);
+  --sidebar-primary: oklch(0.55 0.18 245);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.94 0.04 240);
+  --sidebar-accent-foreground: oklch(0.32 0.12 245);
+  --sidebar-border: oklch(0.91 0.03 240);
+  --sidebar-ring: oklch(0.55 0.18 245);
+  /* Animation tokens - refined timings */
+  --anim-duration-fast: 100ms;
+  --anim-duration: 200ms;
+  --anim-duration-slow: 320ms;
+  --anim-duration-slower: 450ms;
+  --anim-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --anim-ease-in: cubic-bezier(0.64, 0, 0.78, 0);
+  --anim-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --anim-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 oklch(0 0 0 / 0.03);
+  --shadow-md:
+    0 4px 6px -1px oklch(0 0 0 / 0.05), 0 2px 4px -2px oklch(0 0 0 / 0.05);
+  --shadow-lg:
+    0 10px 15px -3px oklch(0 0 0 / 0.08), 0 4px 6px -4px oklch(0 0 0 / 0.05);
+  --shadow-glow: 0 0 24px oklch(0.55 0.18 245 / 0.18);
+}
+
+.dark,
+[data-theme="dark"] {
+  color-scheme: dark;
+  /* Deep navy dark theme with blue undertones (not pure grey). */
+  --background: oklch(0.16 0.025 245);
+  --foreground: oklch(0.94 0.008 240);
+  --card: oklch(0.2 0.028 245);
+  --card-foreground: oklch(0.94 0.008 240);
+  --popover: oklch(0.2 0.028 245);
+  --popover-foreground: oklch(0.94 0.008 240);
+  --primary: oklch(0.74 0.13 240);
+  --primary-foreground: oklch(0.16 0.025 245);
+  --secondary: oklch(0.26 0.03 245);
+  --secondary-foreground: oklch(0.94 0.008 240);
+  --muted: oklch(0.24 0.025 245);
+  --muted-foreground: oklch(0.68 0.025 240);
+  --accent: oklch(0.32 0.06 240);
+  --accent-foreground: oklch(0.94 0.008 240);
+  --destructive: oklch(0.66 0.2 25);
+  --destructive-foreground: oklch(0.97 0.005 240);
+  --border: oklch(0.3 0.025 245);
+  --input: oklch(0.3 0.025 245);
+  --ring: oklch(0.74 0.13 240);
+  --primary-weak: oklch(0.36 0.09 240);
+  --success: oklch(0.68 0.15 160);
+  --warning: oklch(0.78 0.13 80);
+  /* Pastel accents - softer in dark mode */
+  --pastel-blue: oklch(0.36 0.07 240);
+  --pastel-mint: oklch(0.36 0.07 165);
+  --pastel-rose: oklch(0.36 0.07 15);
+  --pastel-amber: oklch(0.4 0.08 80);
+  /* Chart colors - dark, blue-leaning */
+  --chart-1: oklch(0.7 0.15 245);
+  --chart-2: oklch(0.7 0.12 200);
+  --chart-3: oklch(0.72 0.13 165);
+  --chart-4: oklch(0.78 0.12 80);
+  --chart-5: oklch(0.7 0.15 320);
+  /* Sidebar - slightly darker than card for hierarchy */
+  --sidebar: oklch(0.14 0.025 245);
+  --sidebar-foreground: oklch(0.94 0.008 240);
+  --sidebar-primary: oklch(0.74 0.13 240);
+  --sidebar-primary-foreground: oklch(0.16 0.025 245);
+  --sidebar-accent: oklch(0.24 0.025 245);
+  --sidebar-accent-foreground: oklch(0.94 0.008 240);
+  --sidebar-border: oklch(0.28 0.025 245);
+  --sidebar-ring: oklch(0.74 0.13 240);
+  /* Shadows - dark */
+  --shadow-sm: 0 1px 2px 0 oklch(0 0 0 / 0.4);
+  --shadow-md:
+    0 4px 6px -1px oklch(0 0 0 / 0.5), 0 2px 4px -2px oklch(0 0 0 / 0.4);
+  --shadow-lg:
+    0 10px 15px -3px oklch(0 0 0 / 0.55), 0 4px 6px -4px oklch(0 0 0 / 0.4);
+  --shadow-glow: 0 0 25px oklch(0.74 0.13 240 / 0.25);
+}
+
+/* Light theme explicit override (used when user toggles to light) */
+[data-theme="light"] {
+  color-scheme: light;
+  --background: oklch(0.99 0.008 240);
+  --foreground: oklch(0.18 0.025 245);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.025 245);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.025 245);
+  --primary: oklch(0.55 0.18 245);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.94 0.04 240);
+  --secondary-foreground: oklch(0.32 0.12 245);
+  --muted: oklch(0.96 0.025 240);
+  --muted-foreground: oklch(0.5 0.04 240);
+  --accent: oklch(0.92 0.06 240);
+  --accent-foreground: oklch(0.32 0.12 245);
+  --destructive: oklch(0.62 0.18 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.91 0.03 240);
+  --input: oklch(0.91 0.03 240);
+  --ring: oklch(0.6 0.14 245);
+  --primary-weak: oklch(0.88 0.07 240);
+  --pastel-blue: oklch(0.92 0.06 240);
+  --pastel-mint: oklch(0.92 0.06 165);
+  --pastel-rose: oklch(0.92 0.06 15);
+  --pastel-amber: oklch(0.94 0.07 80);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-primary-weak: var(--primary-weak);
+  --color-pastel-blue: var(--pastel-blue);
+  --color-pastel-mint: var(--pastel-mint);
+  --color-pastel-rose: var(--pastel-rose);
+  --color-pastel-amber: var(--pastel-amber);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-sans: var(--font-poppins);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/30;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "cv11", "ss01";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+    /* Galería de /sobre-mi: cada tile entra con fade + scale-up + slight
+   * lift desde abajo. El animation-delay se asigna inline por tile para
+   * crear un efecto de oleada de izquierda-arriba a derecha-abajo.
+   */
+  .gallery-tile {
+    animation: gallery-tile-in 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes gallery-tile-in {
+    from {
+      opacity: 0;
+      transform: translateY(16px) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gallery-tile {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+/* Cuando el ThemeToggle agrega esta clase a <html> durante el frame
+   * del cambio de tema, desactivamos TODA transición y animación. Así el
+   * cambio de CSS vars es instantáneo (snap) y no dispara los transition-all
+   * de items del sidebar, hovers, etc., que producían un titileo feo. */
+  .theme-no-transition,
+  .theme-no-transition *,
+  .theme-no-transition *::before,
+  .theme-no-transition *::after {
+    transition: none !important;
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+
+  /* Smoother scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/* Prevent 300ms double-tap delay on touch devices */
+button,
+a,
+[role="button"],
+input,
+select,
+textarea,
+label {
+  touch-action: manipulation;
+}
+
+/* Focus visible ring - subtle fallback for elements without custom focus styles */
+:focus-visible {
+  outline: 1.5px solid rgb(from var(--ring) r g b / 0.4);
+  outline-offset: 2px;
+}
+
+/* Components with their own ring handle focus themselves */
+[data-slot] :focus-visible,
+[data-slot]:focus-visible {
+  outline: none;
+}
+
+/* Improved selection styling */
+::selection {
+  background: oklch(from var(--primary) l c h / 0.25);
+  color: var(--foreground);
+}
+
+/*
+  Reusable animation utilities (framework-agnostic, class based)
+  Naming: .anim-* are composed with Tailwind utilities in className
+*/
+.anim-fade-in {
+  opacity: 0;
+  transform: translateY(4px) scale(0.98);
+  transition:
+    opacity var(--anim-duration) var(--anim-ease-out),
+    transform var(--anim-duration) var(--anim-ease-out);
+}
+
+.is-open .anim-fade-in,
+details[open] .anim-fade-in {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Menu mount/unmount helper: hide but keep in flow for animating from closed */
+details > .anim-menu,
+.is-open > .anim-menu {
+  display: block;
+}
+
+.anim-menu {
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(4px) scale(0.98);
+  transition:
+    opacity var(--anim-duration) var(--anim-ease-out),
+    transform var(--anim-duration) var(--anim-ease-out),
+    visibility 0s linear var(--anim-duration);
+}
+
+details[open] > .anim-menu,
+.is-open > .anim-menu {
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition:
+    opacity var(--anim-duration) var(--anim-ease-out),
+    transform var(--anim-duration) var(--anim-ease-out),
+    visibility 0s;
+}
+
+/* Page transitions:
+ * No hay transición global de página. Cada página usa <Reveal trigger="mount">
+ * en sus secciones para hacer fade-up sutil al cargar. La barra de progreso
+ * superior (LoadingScreen) cubre el feedback de "estoy navegando".
+ */
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-fade-in-up,
+  .animate-fade-in-down,
+  .animate-scale-in,
+  .animate-slide-in-right,
+  .animate-slide-in-left,
+  .anim-bounce,
+  .card-interactive,
+  .hover-brighten,
+  .press-scale,
+  .hover-lift {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .btn-shine:hover:not(:disabled) {
+    animation: none !important;
+  }
+}
+
+/* Keyframe animations */
+@keyframes anim-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes anim-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes anim-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes anim-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  20%,
+  60% {
+    transform: translateX(-2px);
+  }
+
+  40%,
+  80% {
+    transform: translateX(2px);
+  }
+}
+
+@keyframes anim-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes anim-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes anim-fade-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes anim-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes anim-slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes anim-slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes anim-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes anim-glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 oklch(from var(--primary) l c h / 0);
+  }
+
+  50% {
+    box-shadow: 0 0 16px 4px oklch(from var(--primary) l c h / 0.15);
+  }
+}
+
+/* Animation utilities */
+.anim-spinner {
+  animation: anim-spin 0.8s linear infinite;
+}
+
+.anim-pulse {
+  animation: anim-pulse 2s var(--anim-ease-in-out) infinite;
+}
+
+.anim-bounce {
+  animation: anim-bounce 1s var(--anim-ease-out) infinite;
+}
+
+.animate-fade-in {
+  animation: anim-fade-in var(--anim-duration) var(--anim-ease-out) both;
+}
+
+.animate-fade-in-up {
+  animation: anim-fade-in-up var(--anim-duration-slow) var(--anim-ease-out) both;
+}
+
+.animate-fade-in-down {
+  animation: anim-fade-in-down var(--anim-duration-slow) var(--anim-ease-out)
+    both;
+}
+
+.animate-scale-in {
+  animation: anim-scale-in var(--anim-duration) var(--anim-spring) both;
+}
+
+.animate-slide-in-right {
+  animation: anim-slide-in-right var(--anim-duration-slow) var(--anim-ease-out)
+    both;
+}
+
+.animate-slide-in-left {
+  animation: anim-slide-in-left var(--anim-duration-slow) var(--anim-ease-out)
+    both;
+}
+
+/* Stagger animation delays for lists */
+.stagger-1 {
+  animation-delay: 50ms;
+}
+
+.stagger-2 {
+  animation-delay: 100ms;
+}
+
+.stagger-3 {
+  animation-delay: 150ms;
+}
+
+.stagger-4 {
+  animation-delay: 200ms;
+}
+
+.stagger-5 {
+  animation-delay: 250ms;
+}
+
+.stagger-6 {
+  animation-delay: 300ms;
+}
+
+/* Skeleton shimmer effect - GPU-accelerated via will-change */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--muted) 25%,
+    oklch(from var(--muted) calc(l + 0.05) c h) 50%,
+    var(--muted) 75%
+  );
+  background-size: 200% 100%;
+  animation: anim-shimmer 1.5s infinite;
+  will-change: background-position;
+}
+
+/* Glow effect for focus/active states */
+.glow-on-hover {
+  transition: box-shadow var(--anim-duration) var(--anim-ease-out);
+}
+
+.glow-on-hover:hover {
+  box-shadow: var(--shadow-glow);
+}
+
+/* Components gallery page layout helpers */
+.components-gallery-shell {
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .components-gallery-shell {
+    margin-left: calc((100vw - 100%) / -2);
+    margin-right: calc((100vw - 100%) / -2);
+  }
+}
+
+/* Page depth - subtle vignette that makes content feel elevated */
+.main-surface {
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgb(255 255 255 / 0.5) 0%,
+      transparent 70%
+    ),
+    var(--background);
+}
+
+:is(.dark, [data-theme="dark"]) .main-surface {
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgb(255 255 255 / 0.02) 0%,
+      transparent 70%
+    ),
+    var(--background);
+}
+
+/* Interaction micro-utilities - token-driven, brand-agnostic */
+.hover-brighten {
+  transition: background-color var(--anim-duration) var(--anim-ease-out);
+}
+
+.hover-brighten:hover {
+  background-color: oklch(from var(--primary) calc(l + 0.07) c h);
+}
+
+.press-scale {
+  transition: transform var(--anim-duration-fast) var(--anim-ease-out);
+}
+
+.press-scale:active {
+  transform: scale(0.97);
+}
+
+.hover-lift {
+  transition:
+    border-color var(--anim-duration) var(--anim-ease-out),
+    box-shadow var(--anim-duration) var(--anim-ease-out);
+}
+
+.hover-lift:hover {
+  border-color: var(--primary-weak);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Primary button depth + light-sweep reflection.
+   At rest: subtle top-to-bottom gradient for dimensional look (white top → black bottom).
+   On hover: shine sweep layered on top of the depth gradient. */
+.btn-shine {
+  background-image: linear-gradient(
+    180deg,
+    rgb(255 255 255 / 0.12) 0%,
+    rgb(0 0 0 / 0.12) 100%
+  );
+}
+
+@keyframes btn-shine-sweep {
+  0% {
+    background-position:
+      200% center,
+      0 0;
+  }
+  35% {
+    background-position:
+      -200% center,
+      0 0;
+  }
+  35.01%,
+  100% {
+    background-position:
+      200% center,
+      0 0;
+  }
+}
+
+.btn-shine:hover:not(:disabled) {
+  background-image:
+    linear-gradient(
+      120deg,
+      transparent 0%,
+      transparent 30%,
+      rgb(255 255 255 / 0.1) 42%,
+      rgb(255 255 255 / 0.22) 50%,
+      rgb(255 255 255 / 0.1) 58%,
+      transparent 70%,
+      transparent 100%
+    ),
+    linear-gradient(180deg, rgb(255 255 255 / 0.12) 0%, rgb(0 0 0 / 0.12) 100%);
+  background-size:
+    250% 100%,
+    100% 100%;
+  background-repeat: no-repeat, no-repeat;
+  animation: btn-shine-sweep 3.5s ease-in-out infinite;
+}
+
+.btn-shine:disabled {
+  background-image: none;
+}
+
+/* Card hover effects */
+.card-interactive {
+  transition:
+    transform var(--anim-duration) var(--anim-ease-out),
+    box-shadow var(--anim-duration) var(--anim-ease-out),
+    border-color var(--anim-duration) var(--anim-ease-out);
+}
+
+.card-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-weak);
+}
+
+/* Glass effect for overlays */
+.glass {
+  background: oklch(from var(--background) l c h / 0.8);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+}
+
+.glass-subtle {
+  background: oklch(from var(--background) l c h / 0.6);
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+}
+
+/* Cartelera body (HTML sanitizado de cada anuncio) */
+.cartelera-body {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--foreground);
+}
+.cartelera-body > *:first-child {
+  margin-top: 0;
+}
+.cartelera-body > *:last-child {
+  margin-bottom: 0;
+}
+.cartelera-body p {
+  margin: 0.5em 0;
+}
+.cartelera-body a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+.cartelera-body a:hover {
+  text-decoration-thickness: 2px;
+}
+.cartelera-body strong,
+.cartelera-body b {
+  font-weight: 600;
+  color: var(--foreground);
+}
+.cartelera-body ul,
+.cartelera-body ol {
+  margin: 0.5em 0;
+  padding-left: 1.5em;
+}
+.cartelera-body li {
+  margin: 0.2em 0;
+}
+.cartelera-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 0.5em 0;
+}
+.cartelera-body code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85em;
+  background: var(--muted);
+  padding: 0.1em 0.35em;
+  border-radius: 0.25rem;
+}
+.cartelera-body blockquote {
+  border-left: 3px solid var(--primary-weak);
+  padding-left: 0.75em;
+  margin: 0.5em 0;
+  color: var(--muted-foreground);
+}
+.cartelera-body hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 1em 0;
+}
+.cartelera-body table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0.5em 0;
+}
+.cartelera-body th,
+.cartelera-body td {
+  border: 1px solid var(--border);
+  padding: 0.4em 0.6em;
+  text-align: left;
+}
+.cartelera-body th {
+  background: var(--muted);
+  font-weight: 600;
+}
+/* Tipografías inline forzadas por el editor original quedan acotadas */
+.cartelera-body span[style*="font-size"] {
+  font-size: inherit !important;
+}
+.cartelera-body span[style*="font-family"] {
+  font-family: inherit !important;
+}
+
+/* Colores inline del HTML oficial: en modo oscuro reseteamos a los
+ * tokens del tema. La cartelera virtual UNLP suele mandar
+ * `<span style="color:#000000">` u otros grises/negros que en light
+ * mode se ven bien pero sobre el fondo oscuro quedan ilegibles
+ * (texto negro sobre navy = invisible). En light mode dejamos pasar
+ * los colores por si la cátedra los usó para enfatizar algo concreto. */
+:is(.dark, [data-theme="dark"]) .cartelera-body [style*="color"] {
+  color: inherit !important;
+}
+:is(.dark, [data-theme="dark"]) .cartelera-body [style*="background"] {
+  background-color: transparent !important;
+}
+
+/* Preview en card: tope de altura, sin recortar nada visual si el
+ * contenido entra completo. La fade del final solo se aplica cuando
+ * data-faded="true" (lo decide JS midiendo scrollHeight vs clientHeight).
+ */
+.cartelera-body-preview {
+  max-height: 8.5em;
+  overflow: hidden;
+}
+.cartelera-body-preview[data-faded="true"] {
+  mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
+}
+
+/* Custom scrollbar global
+ *
+ * Aplica al scroll del documento y a cualquier overflow container, salvo
+ * que el elemento tenga .scrollbar-thin (versión más fina para menus
+ * internos) o .scrollbar-hide (oculto pero funcional).
+ *
+ * Diseño: thumb azul-pastel translucente sobre track transparente,
+ * con un leve "padding" interior conseguido con un border del color
+ * del background. Al hacer hover el thumb se oscurece. Funciona en
+ * webkit (Chrome/Safari/Edge) + Firefox.
+ */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-weak) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-weak);
+  border-radius: 9999px;
+  border: 3px solid var(--background);
+  background-clip: padding-box;
+  transition: background-color 200ms var(--anim-ease-out);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Variante fina (.scrollbar-thin) para menus laterales y popovers */
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: var(--primary-weak);
+  border-radius: 9999px;
+  border: 0;
+  transition: background-color 200ms var(--anim-ease-out);
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary);
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Gradient text effect */
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Better mobile tap highlighting */
+@media (hover: none) and (pointer: coarse) {
+  button,
+  a,
+  [role="button"] {
+    -webkit-tap-highlight-color: oklch(from var(--primary) l c h / 0.1);
+  }
+}
+
+/* Improved focus styles for touch devices */
+@media (hover: none) {
+  :focus-visible {
+    outline-offset: 3px;
+  }
+}
+
+/* Container with consistent padding for different screen sizes */
+.container-responsive {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-responsive {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-responsive {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Compact spacing for dense UIs (settings, data tables) */
+.compact-spacing {
+  --spacing-unit: 0.75rem;
+}
+
+.compact-spacing > * + * {
+  margin-top: var(--spacing-unit);
+}
+
+/* Label truncation with ellipsis - tolerant for longer translations */
+.label-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+/* Flexible label container that wraps on mobile */
+.label-flexible {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  align-items: baseline;
+}
+
+/* Input and form field consistent sizing */
+.field-consistent {
+  min-height: 2.5rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Status indicator dot */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-dot-success {
+  background: var(--success);
+  box-shadow: 0 0 6px oklch(from var(--success) l c h / 0.5);
+}
+
+.status-dot-warning {
+  background: var(--warning);
+  box-shadow: 0 0 6px oklch(from var(--warning) l c h / 0.5);
+}
+
+.status-dot-error {
+  background: var(--destructive);
+  box-shadow: 0 0 6px oklch(from var(--destructive) l c h / 0.5);
+}
+
+/* Improved table styles for settings/config pages */
+.table-modern {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table-modern th {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted-foreground);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  background: var(--muted);
+}
+
+.table-modern th:first-child {
+  border-top-left-radius: calc(var(--radius-lg) - 1px);
+}
+
+.table-modern th:last-child {
+  border-top-right-radius: calc(var(--radius-lg) - 1px);
+}
+
+.table-modern td {
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid oklch(from var(--border) l c h / 0.5);
+  transition: background var(--anim-duration-fast) var(--anim-ease-out);
+}
+
+.table-modern tbody tr:hover td {
+  background: oklch(from var(--muted) l c h / 0.5);
+}
+
+.table-modern tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table-modern tbody tr:last-child:hover td:first-child {
+  border-bottom-left-radius: calc(var(--radius-lg) - 1px);
+}
+
+.table-modern tbody tr:last-child:hover td:last-child {
+  border-bottom-right-radius: calc(var(--radius-lg) - 1px);
+}
+
+/* React Flow Controls / nodes theming para el grafo de correlativas.
+ * Por default los Controls vienen con bg blanco hardcoded y en dark
+ * mode quedan invisibles. Tematizamos a tokens del proyecto. También
+ * forzamos z-index para que los nodos siempre tapen las flechas que
+ * pasan por debajo, así un card opaco no se "transparenta" en hover. */
+.correlativas-graph .react-flow__controls {
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.correlativas-graph .react-flow__controls-button {
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  color: var(--foreground);
+  width: 28px;
+  height: 28px;
+}
+.correlativas-graph .react-flow__controls-button:hover {
+  background: var(--secondary);
+}
+.correlativas-graph .react-flow__controls-button svg {
+  fill: var(--foreground);
+}
+.correlativas-graph .react-flow__controls-button:last-child {
+  border-bottom: none;
+}
+/* Los nodos SIEMPRE arriba de las edges. !important con z-index alto
+ * para que ni React Flow ni cualquier override interno pueda dejar una
+ * flecha resaltada por encima de un card. Sin esto, en hover algunas
+ * cards se ven "transparentes" porque la flecha tapa el contenido. */
+.correlativas-graph .react-flow__node {
+  z-index: 100 !important;
+}
+.correlativas-graph .react-flow__edges {
+  z-index: 1;
+}
+.correlativas-graph .react-flow__edge {
+  z-index: 1 !important;
+}
