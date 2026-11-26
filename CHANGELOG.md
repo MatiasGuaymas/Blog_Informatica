@@ -10,6 +10,8 @@ Every entry ends with its pull request number and the GitHub handle of its autho
 
 ### Added
 
+- Claude Code setup shared through the repository: rules in `AGENTS.md` (imported by `CLAUDE.md`), team settings, tested hooks that enforce the workflow, and project skills for the git workflow, task management, feature specs, changelog, releases and documentation. #57 @MatiasGuaymas
+- Twenty reviewed third-party agent skills for design, motion, React performance, security audits, collaboration and user stories, vendored with their licenses. #57 @MatiasGuaymas
 - Git hooks with lefthook: Biome on staged files, file-size limits, a branding guard, and Conventional Commits in English for commit messages. #3 @MatiasGuaymas
 - GitHub Actions for CI (lint, typecheck, repository checks, build), pull request checks (title, docs and changelog), security scans (dependency audit, dependency review, secret scan) and automatic tags and GitHub Releases from `main`. #3 @MatiasGuaymas
 - Dependabot for npm and GitHub Actions, CODEOWNERS, a pull request template, issue forms for epics, features and bugs, and the label taxonomy. #3 @MatiasGuaymas
