@@ -24,8 +24,8 @@ export default function CalendarioPage() {
           </h1>
           <p className="max-w-prose text-muted-foreground">
             Las fechas que importan: cursada, inscripciones, mesas de final,
-            feriados y recesos. Hacé click en un día para ver los eventos, o
-            usá los filtros para enfocarte en lo que te interesa.
+            feriados y recesos. Hacé click en un día para ver los eventos, o usá
+            los filtros para enfocarte en lo que te interesa.
           </p>
           <p className="text-xs text-muted-foreground">
             <a

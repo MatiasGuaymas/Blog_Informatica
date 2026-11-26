@@ -3,7 +3,7 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { AnuncioModal } from "@/components/cartelera/AnuncioCard";
-import { type Mensaje, formatFechaCompleta } from "@/lib/cartelera";
+import { formatFechaCompleta, type Mensaje } from "@/lib/cartelera";
 
 interface Props {
   mensaje: Mensaje;

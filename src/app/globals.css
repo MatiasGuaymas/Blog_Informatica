@@ -210,7 +210,7 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-    /* Galería de /sobre-mi: cada tile entra con fade + scale-up + slight
+  /* Galería de /sobre-mi: cada tile entra con fade + scale-up + slight
    * lift desde abajo. El animation-delay se asigna inline por tile para
    * crear un efecto de oleada de izquierda-arriba a derecha-abajo.
    */
@@ -237,7 +237,7 @@
     }
   }
 
-/* Cuando el ThemeToggle agrega esta clase a <html> durante el frame
+  /* Cuando el ThemeToggle agrega esta clase a <html> durante el frame
    * del cambio de tema, desactivamos TODA transición y animación. Así el
    * cambio de CSS vars es instantáneo (snap) y no dispara los transition-all
    * de items del sidebar, hovers, etc., que producían un titileo feo. */

@@ -6,9 +6,9 @@ import {
   CATEGORIA_LABELS,
   CATEGORIA_STYLES,
   CATEGORIAS_ORDEN,
+  diasDeRango,
   type EventoCalendario,
   type EventoCategoria,
-  diasDeRango,
   eventosActivos,
   eventosCalendario,
   eventosEnDia,
@@ -30,9 +30,11 @@ import {
 const LONG_RANGE_THRESHOLD_DAYS = 14;
 function esEventoLargo(ev: EventoCalendario): boolean {
   return (
-    ev.tipo === "rango" && diasDeRango(ev.inicio, ev.fin) > LONG_RANGE_THRESHOLD_DAYS
+    ev.tipo === "rango" &&
+    diasDeRango(ev.inicio, ev.fin) > LONG_RANGE_THRESHOLD_DAYS
   );
 }
+
 import { cn } from "@/lib/utils";
 
 // Para resaltar el evento "más importante" en una celda con varios.
@@ -518,7 +520,10 @@ function DayCell({
             feriadoNacional &&
             "font-semibold text-rose-600 dark:text-rose-400",
           esHoy && "bg-primary font-bold text-primary-foreground",
-          esSeleccionado && !esHoy && !feriadoNacional && "font-semibold text-primary",
+          esSeleccionado &&
+            !esHoy &&
+            !feriadoNacional &&
+            "font-semibold text-primary",
         )}
       >
         {date.getDate()}
@@ -535,6 +540,7 @@ function DayCell({
               topStyle.dot,
               !inThisMonth && "opacity-50",
             )}
+            role="img"
             aria-label={CATEGORIA_LABELS[top.categoria]}
           />
           {/* >= lg: chip completo con label */}
@@ -605,7 +611,9 @@ function EventoLinea({ ev }: { ev: EventoCalendario }) {
           : "Día puntual"}
       </p>
       {ev.nota && (
-        <p className="ml-1 text-xs italic text-muted-foreground/80">{ev.nota}</p>
+        <p className="ml-1 text-xs italic text-muted-foreground/80">
+          {ev.nota}
+        </p>
       )}
     </li>
   );
@@ -724,9 +732,7 @@ function SectionHeader({ title, hint }: { title: string; hint?: string }) {
   return (
     <div className="flex items-center gap-3">
       <h2 className="text-xl font-bold text-foreground">{title}</h2>
-      {hint && (
-        <span className="text-xs text-muted-foreground">{hint}</span>
-      )}
+      {hint && <span className="text-xs text-muted-foreground">{hint}</span>}
       <span className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
     </div>
   );
@@ -743,7 +749,9 @@ function buildMonthGrid(year: number, month: number): Date[] {
 
   const days: Date[] = [];
   for (let i = 0; i < 42; i++) {
-    days.push(new Date(start.getFullYear(), start.getMonth(), start.getDate() + i));
+    days.push(
+      new Date(start.getFullYear(), start.getMonth(), start.getDate() + i),
+    );
   }
   return days;
 }

@@ -13,12 +13,12 @@ import {
   ShieldCheck,
   User,
 } from "lucide-react";
-import { GithubIcon } from "@/components/icons/GithubIcon";
-import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { GithubIcon } from "@/components/icons/GithubIcon";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { cn } from "@/lib/utils";
 
 interface NavItem {
@@ -146,7 +146,11 @@ export default function DesktopSidebar({
       />
 
       <nav className="flex-1 overflow-y-auto py-4 scrollbar-thin">
-        <NavSection items={standaloneItems} collapsed={collapsed} isActive={isActive} />
+        <NavSection
+          items={standaloneItems}
+          collapsed={collapsed}
+          isActive={isActive}
+        />
 
         {filteredGroups.map((group) => (
           <NavGroup
@@ -176,14 +180,19 @@ interface SidebarHeaderProps {
 function SidebarHeader({ appName, collapsed, onToggle }: SidebarHeaderProps) {
   return (
     <div className="relative flex items-center gap-3 px-3 py-4 border-b border-sidebar-border">
-      <BrandMark collapsed={collapsed} onExpand={collapsed ? onToggle : undefined} />
+      <BrandMark
+        collapsed={collapsed}
+        onExpand={collapsed ? onToggle : undefined}
+      />
 
       {/* Brand wordmark - fades when collapsed */}
       <div
         className={cn(
           "flex flex-col leading-tight overflow-hidden whitespace-nowrap",
           "transition-[opacity,transform] duration-300 ease-out",
-          collapsed ? "opacity-0 -translate-x-2 w-0" : "opacity-100 translate-x-0",
+          collapsed
+            ? "opacity-0 -translate-x-2 w-0"
+            : "opacity-100 translate-x-0",
         )}
       >
         <span className="font-semibold text-sm text-sidebar-foreground">
@@ -259,7 +268,11 @@ function BrandMark({ collapsed, onExpand }: BrandMarkProps) {
     );
   }
 
-  return <Link href="/" className="group">{inner}</Link>;
+  return (
+    <Link href="/" className="group">
+      {inner}
+    </Link>
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -380,7 +393,9 @@ function NavItemLink({ item, collapsed, active }: NavItemLinkProps) {
           href={item.href}
           target="_blank"
           rel="noreferrer"
-          title={collapsed ? `${item.label} (abrir en otra pestaña)` : undefined}
+          title={
+            collapsed ? `${item.label} (abrir en otra pestaña)` : undefined
+          }
           className={className}
         >
           {inner}

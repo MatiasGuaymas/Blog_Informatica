@@ -12,12 +12,12 @@ import {
   ShieldCheck,
   User,
 } from "lucide-react";
-import { GithubIcon } from "@/components/icons/GithubIcon";
-import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef } from "react";
+import { GithubIcon } from "@/components/icons/GithubIcon";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import {
   Sheet,
   SheetContent,
@@ -191,7 +191,9 @@ export default function MobileSidebarTrigger({
       isTracking.current = false;
     };
 
-    content.addEventListener("touchstart", touchStartHandler, { passive: true });
+    content.addEventListener("touchstart", touchStartHandler, {
+      passive: true,
+    });
     content.addEventListener("touchmove", touchMoveHandler, { passive: true });
     content.addEventListener("touchend", touchEndHandler, { passive: true });
 
@@ -247,7 +249,9 @@ export default function MobileSidebarTrigger({
               />
             </div>
             <div className="flex flex-col leading-tight text-left">
-              <SheetTitle className="text-sm font-semibold">{appName}</SheetTitle>
+              <SheetTitle className="text-sm font-semibold">
+                {appName}
+              </SheetTitle>
               <span className="text-[10px] uppercase tracking-widest text-muted-foreground">
                 UNLP
               </span>

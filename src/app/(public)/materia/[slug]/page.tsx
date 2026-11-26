@@ -181,8 +181,8 @@ function ContenidoEnPreparacion() {
         <p className="font-medium text-foreground">Notas en preparación</p>
         <p className="text-muted-foreground">
           Todavía no escribí mis recomendaciones para esta materia. Mientras
-          tanto, mirá el resto del plan en la página de tu carrera y la cartelera
-          oficial.
+          tanto, mirá el resto del plan en la página de tu carrera y la
+          cartelera oficial.
         </p>
       </div>
     </section>

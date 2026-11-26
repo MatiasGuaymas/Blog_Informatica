@@ -15,7 +15,6 @@ export function CardSkeleton({
   className = "",
 }: CardSkeletonProps) {
   return (
-    // biome-ignore lint/a11y/useSemanticElements: role="status" is appropriate for loading indicators
     <div
       className={[
         "animate-pulse rounded-xl border border-border bg-card p-6",

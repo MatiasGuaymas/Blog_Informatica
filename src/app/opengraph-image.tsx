@@ -99,8 +99,8 @@ export default async function OgImage() {
             fontWeight: 400,
           }}
         >
-          Compañero de estudio para las carreras de la Facultad de
-          Informática UNLP: APU, ATIC, LS y LI.
+          Compañero de estudio para las carreras de la Facultad de Informática
+          UNLP: APU, ATIC, LS y LI.
         </div>
       </div>
 
