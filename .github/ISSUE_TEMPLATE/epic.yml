@@ -1,0 +1,52 @@
+name: Epic
+description: A large body of work that groups several features.
+title: "Epic: "
+labels: ["type: epic"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        An epic groups features as GitHub sub-issues. Write in English.
+        Guide: docs/guides/task-workflow.md
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: The outcome this epic delivers, in one or two sentences.
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Who has the problem, and why it matters now.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      value: |
+        **In scope**
+        -
+
+        **Out of scope**
+        -
+    validations:
+      required: true
+  - type: textarea
+    id: success
+    attributes:
+      label: Success criteria
+      description: Observable signals that the epic is done.
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks and dependencies
+  - type: input
+    id: brief
+    attributes:
+      label: Epic brief
+      description: Link to docs/epics/<key>-<slug>/README.md

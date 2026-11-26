@@ -66,13 +66,13 @@ export default function BibliografiaPage() {
               <strong className="font-semibold">Importante:</strong> los
               primeros 2 años son{" "}
               <strong className="font-semibold">idénticos</strong> en las 4
-              carreras de la facultad (APU, ATIC, LS y LI). Para esas
-              materias cualquiera de los dos repositorios te sirve.
+              carreras de la facultad (APU, ATIC, LS y LI). Para esas materias
+              cualquiera de los dos repositorios te sirve.
             </p>
             <p className="text-muted-foreground">
-              Las diferencias aparecen desde el tercer año. APU y ATIC
-              cierran en 3° año con su recorrido propio; LS y LI siguen
-              hasta 5° año compartiendo la mayoría de las asignaturas.
+              Las diferencias aparecen desde el tercer año. APU y ATIC cierran
+              en 3° año con su recorrido propio; LS y LI siguen hasta 5° año
+              compartiendo la mayoría de las asignaturas.
             </p>
           </div>
         </div>

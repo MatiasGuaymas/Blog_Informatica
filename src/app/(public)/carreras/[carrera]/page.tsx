@@ -7,11 +7,11 @@ import { Reveal } from "@/components/motion/Reveal";
 import {
   type Carrera,
   type Cuatrimestre,
-  type PlanRow,
   carreras,
   getCarreraBySlug,
   getMateriaSlug,
   hasMateriaSlug,
+  type PlanRow,
 } from "@/lib/carreras";
 import { pageMetadata } from "@/lib/site";
 
@@ -105,7 +105,11 @@ export default async function CarreraPlanPage({
 
       <div className="space-y-12">
         {grouped.map(({ anio, bloques }, idx) => (
-          <Reveal key={anio} trigger={idx < 2 ? "mount" : "view"} delay={idx < 2 ? 0.1 + idx * 0.05 : 0}>
+          <Reveal
+            key={anio}
+            trigger={idx < 2 ? "mount" : "view"}
+            delay={idx < 2 ? 0.1 + idx * 0.05 : 0}
+          >
             <section className="space-y-4">
               <div className="flex items-baseline gap-3">
                 <h2 className="text-2xl font-bold text-foreground">

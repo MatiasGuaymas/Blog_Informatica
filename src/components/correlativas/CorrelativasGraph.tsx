@@ -20,9 +20,9 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   type Carrera,
   type Cuatrimestre,
-  type PlanRow,
   getMateriaSlug,
   hasMateriaSlug,
+  type PlanRow,
 } from "@/lib/carreras";
 import { cn } from "@/lib/utils";
 
@@ -136,7 +136,9 @@ function initialOrdering(plan: PlanRow[]): OrderingState {
     byCol.get(c)?.push(row.codigo);
   }
   for (const codigos of byCol.values()) {
-    codigos.forEach((codigo, i) => rowOf.set(codigo, i));
+    codigos.forEach((codigo, i) => {
+      rowOf.set(codigo, i);
+    });
   }
   return { rowOf, colOf, byCol };
 }
@@ -192,7 +194,9 @@ function barycenterSweep(
 
     const nuevoOrden = conBary.map((x) => x.codigo);
     byCol.set(col, nuevoOrden);
-    nuevoOrden.forEach((codigo, i) => rowOf.set(codigo, i));
+    nuevoOrden.forEach((codigo, i) => {
+      rowOf.set(codigo, i);
+    });
   }
 }
 
@@ -320,8 +324,7 @@ function buildGraph(plan: PlanRow[]) {
   let maxRow = 0;
   for (const r of state.rowOf.values()) if (r > maxRow) maxRow = r;
   const yTopBound = 0;
-  const yBottomBound =
-    HEADER_HEIGHT + (maxRow + 1) * (NODE_HEIGHT + ROW_GAP);
+  const yBottomBound = HEADER_HEIGHT + (maxRow + 1) * (NODE_HEIGHT + ROW_GAP);
 
   function handleY(codigo: string, handleIdx: number): number {
     const pos = positionOf.get(codigo);
@@ -401,8 +404,7 @@ function buildGraph(plan: PlanRow[]) {
       pushVertical(w.sourceCol, { work: w, which: 0, yMin, yMax });
     } else {
       // Multi-hop: 2 verticales (uno saliendo, otro entrando)
-      const laneY =
-        w.lane === "top" ? TOP_LANE_BASE : BOTTOM_LANE_BASE; // tentativo
+      const laneY = w.lane === "top" ? TOP_LANE_BASE : BOTTOM_LANE_BASE; // tentativo
       // Vertical 1: source → laneY, en gap sourceCol
       pushVertical(w.sourceCol, {
         work: w,
@@ -780,9 +782,7 @@ export function CorrelativasGraph({ carrera }: CorrelativasGraphProps) {
     if (!hoveredId) return rawEdges;
     return rawEdges.map((e) => {
       const isRelevant = e.source === hoveredId || e.target === hoveredId;
-      const color = isRelevant
-        ? "var(--primary)"
-        : "var(--muted-foreground)";
+      const color = isRelevant ? "var(--primary)" : "var(--muted-foreground)";
       return {
         ...e,
         markerEnd: {
@@ -807,11 +807,7 @@ export function CorrelativasGraph({ carrera }: CorrelativasGraphProps) {
       // externalUrl gana: típicamente las optativas LI/LS abren la
       // página oficial del listado de optativas del año en otra pestaña.
       if (data.esExternal && data.row.externalUrl) {
-        window.open(
-          data.row.externalUrl,
-          "_blank",
-          "noopener,noreferrer",
-        );
+        window.open(data.row.externalUrl, "_blank", "noopener,noreferrer");
         return;
       }
       if (!data.esInternal) return;

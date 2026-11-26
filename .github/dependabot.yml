@@ -1,0 +1,29 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    target-branch: dev
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    labels: ["type: chore", "area: dependencies"]
+    commit-message:
+      prefix: "chore(deps)"
+    groups:
+      minor-and-patch:
+        update-types: ["minor", "patch"]
+
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: dev
+    ignore:
+      # v6 and later require pnpm 11; this repository pins pnpm 10 (packageManager).
+      - dependency-name: pnpm/action-setup
+        update-types: ["version-update:semver-major"]
+    schedule:
+      interval: weekly
+      day: monday
+    labels: ["type: chore", "area: dependencies"]
+    commit-message:
+      prefix: "ci(deps)"

@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "biomejs.biome",
+    "bradlc.vscode-tailwindcss",
+    "editorconfig.editorconfig",
+    "bierner.markdown-mermaid",
+    "anthropic.claude-code"
+  ]
+}

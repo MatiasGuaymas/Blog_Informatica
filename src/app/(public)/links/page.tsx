@@ -10,9 +10,8 @@ import {
 } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 import { StaggerList } from "@/components/motion/StaggerList";
-import { cn } from "@/lib/utils";
-
 import { pageMetadata } from "@/lib/site";
+import { cn } from "@/lib/utils";
 
 export const metadata = pageMetadata({
   title: "Links útiles",
@@ -45,7 +44,8 @@ const groups: LinkGroup[] = [
       {
         tag: "APU",
         title: "Analista Programador Universitario",
-        description: "Información general, perfil, alcances y plan de estudios.",
+        description:
+          "Información general, perfil, alcances y plan de estudios.",
         href: "https://www.info.unlp.edu.ar/analista-programador-universitario/",
       },
       {
@@ -83,7 +83,8 @@ const groups: LinkGroup[] = [
       {
         tag: "ATIC",
         title: "Plan ATIC 2021",
-        description: "3 años · 24 asignaturas con orientaciones de 6° cuatrimestre.",
+        description:
+          "3 años · 24 asignaturas con orientaciones de 6° cuatrimestre.",
         href: "https://www.info.unlp.edu.ar/analista-en-tecnologias-de-la-informacion-y-la-comunicacion-plan-2021/",
       },
       {
@@ -208,7 +209,8 @@ const groups: LinkGroup[] = [
       {
         tag: "IC",
         title: "Ingeniería en Computación",
-        description: "Sitio dedicado de la carrera de ingeniería en computación.",
+        description:
+          "Sitio dedicado de la carrera de ingeniería en computación.",
         href: "https://ic.info.unlp.edu.ar/",
       },
       {

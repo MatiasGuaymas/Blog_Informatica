@@ -6,9 +6,8 @@ import { GithubIcon } from "@/components/icons/GithubIcon";
 import { InstagramIcon } from "@/components/icons/InstagramIcon";
 import { LinkedinIcon } from "@/components/icons/LinkedinIcon";
 import { Reveal } from "@/components/motion/Reveal";
-import { cn } from "@/lib/utils";
-
 import { pageMetadata } from "@/lib/site";
+import { cn } from "@/lib/utils";
 
 export const metadata = pageMetadata({
   title: "Sobre mí",
@@ -115,7 +114,8 @@ export default function SobreMiPage() {
           <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-base text-muted-foreground sm:text-lg">
             <GraduationCap className="h-4 w-4 shrink-0 text-primary" />
             <span>
-              Recibido de <strong className="font-semibold text-foreground">APU</strong>,
+              Recibido de{" "}
+              <strong className="font-semibold text-foreground">APU</strong>,
               cursando{" "}
               <strong className="font-semibold text-foreground">
                 Licenciatura en Sistemas
@@ -160,9 +160,9 @@ export default function SobreMiPage() {
                 ayudante alumno
               </strong>{" "}
               en Ingeniería de Software 1 y 2 (materias de segundo y tercer
-              año). Antes fui ayudante en materias de primer año de las
-              carreras de Informática, y de esas mismas materias doy
-              actualmente clases particulares en{" "}
+              año). Antes fui ayudante en materias de primer año de las carreras
+              de Informática, y de esas mismas materias doy actualmente clases
+              particulares en{" "}
               <a
                 href="https://rinconinformatico.app/"
                 target="_blank"
@@ -174,10 +174,10 @@ export default function SobreMiPage() {
               .
             </p>
             <p>
-              Me gusta ayudar, explicar y construir herramientas que le
-              sirvan a otros. Disfruto estar siempre haciendo cosas, aprender
-              y trabajar en equipo. De ahí, en gran parte, sale este blog:
-              una herramienta más para los que estamos en la facultad.
+              Me gusta ayudar, explicar y construir herramientas que le sirvan a
+              otros. Disfruto estar siempre haciendo cosas, aprender y trabajar
+              en equipo. De ahí, en gran parte, sale este blog: una herramienta
+              más para los que estamos en la facultad.
             </p>
           </div>
         </section>
@@ -356,11 +356,13 @@ function FotoTile({
           ? "bg-card"
           : "bg-gradient-to-br from-pastel-blue/70 via-pastel-blue/40 to-pastel-blue/20",
       )}
-      style={{
-        aspectRatio: foto.aspect,
-        animationDelay,
-        "--aspect": foto.aspect,
-      } as React.CSSProperties}
+      style={
+        {
+          aspectRatio: foto.aspect,
+          animationDelay,
+          "--aspect": foto.aspect,
+        } as React.CSSProperties
+      }
     >
       {existe ? (
         <Image
@@ -382,4 +384,3 @@ function FotoTile({
     </div>
   );
 }
-

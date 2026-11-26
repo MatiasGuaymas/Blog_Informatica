@@ -1,41 +1,50 @@
-# Env files (never commit secrets)
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Next.js and build output
+.next/
+out/
+build/
+dist/
+.turbo/
+*.tsbuildinfo
+
+# Environment files (never commit secrets)
 .env
 .env.*
 !.env.example
 
-# OS / editor
-.DS_Store
-.idea/
-.vscode/*
-!.vscode/settings.json
-!.vscode/extensions.json
-.cursor/*
-!.cursor/skills
-
-# Logs
-*.log
-npm-debug.log*
-pnpm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Node / Next.js
-node_modules/
-.pnpm-store/
-.next/
-.turbo/
-dist/
-build/
-
-# TypeScript
-*.tsbuildinfo
-
 # Vercel
 .vercel
 
-# Restore / temp
-.restore/
+# Logs
+*.log
 
-# Claude
-.claude/*
-!.claude/.gitkeep
+# Playwright
+/test-results/
+/playwright-report/
+
+# OS and editors
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Claude Code: personal files only (the team configuration in .claude/ is committed)
+.claude/settings.local.json
+.claude/worktrees/
+# Vendored without its 37 MB sample media; see .claude/skills/THIRD-PARTY.md
+.claude/skills/design-taste-frontend/assets/
+CLAUDE.local.md
+.superpowers/
+.taste-skill/
+.impeccable/
+
+# Archives
+*.zip
+
+# iCloud Drive conflict copies ("name 2.ext"); keep the repository out of iCloud folders
+* [0-9]
+* [0-9].*
