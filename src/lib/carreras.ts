@@ -13,6 +13,8 @@
 // editorial sea editable desde el panel admin sin redeploy. Por ahora los planes
 // son estáticos (cambian poco) y los detalles también.
 
+import type { MateriaDetail } from "./materia-detail";
+
 export type Cuatrimestre = 1 | 2 | "intro";
 
 export type TipoMateria =
@@ -57,12 +59,6 @@ export interface Carrera {
   /** URL del plan oficial en info.unlp.edu.ar. */
   planUrl: string;
   plan: PlanRow[];
-}
-
-export interface MateriaDetail {
-  resumen: string;
-  recomendaciones?: string;
-  links?: { label: string; href: string }[];
 }
 
 // ---------------------------------------------------------------------------
@@ -882,19 +878,14 @@ export const materiaDetails: Record<string, MateriaDetail> = {
       "Primera materia de programación de la carrera. Cubre algoritmos básicos, tipos de datos, estructuras de control y modularización en un lenguaje imperativo.",
     recomendaciones:
       "Hacé todos los ejercicios de la guía. Si nunca programaste, no te frustres en las primeras semanas: el salto inicial es el más empinado.",
-    links: [],
   },
   SI107: {
     resumen:
       "Continuación natural de CADP. Profundiza en el lenguaje (Pascal o C según comisión) y suma manejo de archivos, recursión avanzada y estructuras dinámicas.",
-    recomendaciones: "",
-    links: [],
   },
   SI101: {
     resumen:
       "Lógica proposicional, conjuntos, relaciones y funciones. Sienta las bases para todas las matemáticas posteriores.",
-    recomendaciones: "",
-    links: [],
   },
 };
 

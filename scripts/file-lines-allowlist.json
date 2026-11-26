@@ -2,7 +2,7 @@
   "$comment": "Known files over the 500-line limit. Each may not grow beyond max; remove its entry in the pull request that splits it.",
   "files": {
     "src/lib/carreras.ts": {
-      "max": 954,
+      "max": 945,
       "tracking": "split tracked in #6"
     },
     "src/lib/calendario.ts": {
