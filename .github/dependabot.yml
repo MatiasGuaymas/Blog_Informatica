@@ -17,6 +17,10 @@ updates:
   - package-ecosystem: github-actions
     directory: /
     target-branch: dev
+    ignore:
+      # v6 and later require pnpm 11; this repository pins pnpm 10 (packageManager).
+      - dependency-name: pnpm/action-setup
+        update-types: ["version-update:semver-major"]
     schedule:
       interval: weekly
       day: monday
