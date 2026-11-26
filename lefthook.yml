@@ -1,0 +1,27 @@
+# Git hooks for local development. `pnpm install` installs them through the
+# `prepare` script (scripts/install-git-hooks.mjs). They apply to people and
+# AI agents alike. Run one by hand with `pnpm exec lefthook run pre-commit`.
+# Skipping hooks with --no-verify is forbidden (AGENTS.md).
+
+pre-commit:
+  parallel: true
+  commands:
+    biome:
+      glob: "*.{js,jsx,mjs,cjs,ts,tsx,json,jsonc,css}"
+      run: pnpm exec biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
+      stage_fixed: true
+    file-lines:
+      glob: "*.{ts,tsx}"
+      run: node scripts/check-file-lines.mjs {staged_files}
+    forbidden-terms:
+      run: node scripts/check-forbidden-terms.mjs {staged_files}
+
+commit-msg:
+  commands:
+    conventional-english:
+      run: node scripts/check-commit-message.mjs --file {1}
+
+pre-push:
+  commands:
+    typecheck:
+      run: pnpm typecheck

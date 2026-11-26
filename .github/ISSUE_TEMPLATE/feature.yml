@@ -1,0 +1,73 @@
+name: Feature
+description: A capability that delivers value on its own, usually part of an epic.
+labels: ["type: feature"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Write in English and follow the feature-spec standard: user stories that meet INVEST,
+        acceptance criteria in Gherkin, and verifiable requirements.
+        Guide: docs/guides/writing-feature-specs.md
+  - type: input
+    id: epic
+    attributes:
+      label: Parent epic
+      description: The epic issue number, for example #12. Then add this issue as its sub-issue.
+      placeholder: "#"
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What changes for students, in two or three sentences.
+    validations:
+      required: true
+  - type: textarea
+    id: stories
+    attributes:
+      label: User stories
+      value: |
+        | ID | As a | I want to | So that |
+        |---|---|---|---|
+        | US-EXXFXX-01 | | | |
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Two to four scenarios per story, one When each, observable Then, at least one edge case.
+      render: gherkin
+      value: |
+        # US-EXXFXX-01
+        Scenario:
+          Given
+          When
+          Then
+    validations:
+      required: true
+  - type: textarea
+    id: use-cases
+    attributes:
+      label: Use cases
+      description: Only when the flow has meaningful alternatives (actor, preconditions, main success scenario, extensions).
+  - type: textarea
+    id: nfr
+    attributes:
+      label: Non-functional requirements
+      description: Performance, accessibility (WCAG 2.2 AA), security and SEO, as relevant.
+  - type: textarea
+    id: technical
+    attributes:
+      label: Technical notes
+      description: Files likely to change, approach, risks.
+  - type: textarea
+    id: dod
+    attributes:
+      label: Definition of Done
+      value: |
+        - [ ] Acceptance criteria verified
+        - [ ] Lint, typecheck and build pass
+        - [ ] Tests added or updated where applicable
+        - [ ] Docs updated (docs/features or docs/architecture)
+        - [ ] CHANGELOG entry with the PR number and author
+        - [ ] Reviewed and approved by the other developer

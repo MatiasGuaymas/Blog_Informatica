@@ -1,0 +1,153 @@
+{
+  "$comment": "Source of truth for repository labels. Apply with: node scripts/github/sync-labels.mjs",
+  "labels": [
+    {
+      "name": "type: epic",
+      "color": "3E4B9E",
+      "description": "Large body of work, split into features (sub-issues)"
+    },
+    {
+      "name": "type: feature",
+      "color": "1D76DB",
+      "description": "New capability or improvement"
+    },
+    {
+      "name": "type: bug",
+      "color": "D73A4A",
+      "description": "Something does not work as expected"
+    },
+    {
+      "name": "type: chore",
+      "color": "C5DEF5",
+      "description": "Maintenance, tooling, dependencies or refactoring"
+    },
+    {
+      "name": "type: docs",
+      "color": "0075CA",
+      "description": "Documentation only"
+    },
+    {
+      "name": "area: careers",
+      "color": "FEF2C0",
+      "description": "Careers and study plans"
+    },
+    {
+      "name": "area: subjects",
+      "color": "FEF2C0",
+      "description": "Subject pages and their content"
+    },
+    {
+      "name": "area: prerequisites-graph",
+      "color": "FEF2C0",
+      "description": "Interactive prerequisites graph"
+    },
+    {
+      "name": "area: notice-board",
+      "color": "FEF2C0",
+      "description": "Live UNLP notice board"
+    },
+    {
+      "name": "area: calendar",
+      "color": "FEF2C0",
+      "description": "Academic calendar"
+    },
+    {
+      "name": "area: bibliography",
+      "color": "FEF2C0",
+      "description": "Bibliography page"
+    },
+    {
+      "name": "area: links",
+      "color": "FEF2C0",
+      "description": "Directory of official links"
+    },
+    { "name": "area: about", "color": "FEF2C0", "description": "About page" },
+    {
+      "name": "area: seo",
+      "color": "FEF2C0",
+      "description": "Metadata, structured data, sitemap and performance"
+    },
+    {
+      "name": "area: design",
+      "color": "F9D0C4",
+      "description": "Visual design, motion and accessibility"
+    },
+    {
+      "name": "area: content",
+      "color": "FEF2C0",
+      "description": "Editorial content written for students"
+    },
+    {
+      "name": "area: infra",
+      "color": "D4C5F9",
+      "description": "CI, tooling, deployment and repository setup"
+    },
+    {
+      "name": "area: docs",
+      "color": "D4C5F9",
+      "description": "Project documentation"
+    },
+    {
+      "name": "area: dependencies",
+      "color": "D4C5F9",
+      "description": "Dependency updates"
+    },
+    { "name": "priority: high", "color": "B60205", "description": "Do next" },
+    { "name": "priority: medium", "color": "D93F0B", "description": "Planned" },
+    {
+      "name": "priority: low",
+      "color": "0E8A16",
+      "description": "Nice to have"
+    },
+    { "name": "size: S", "color": "C2E0C6", "description": "A few hours" },
+    {
+      "name": "size: M",
+      "color": "7FC9A4",
+      "description": "One to three days"
+    },
+    {
+      "name": "size: L",
+      "color": "2EA44F",
+      "description": "More than three days; consider splitting"
+    },
+    {
+      "name": "good first issue",
+      "color": "7057FF",
+      "description": "Good for getting to know the codebase"
+    },
+    {
+      "name": "help wanted",
+      "color": "008672",
+      "description": "Extra attention is needed"
+    },
+    {
+      "name": "blocked",
+      "color": "000000",
+      "description": "Waiting on a decision or another issue"
+    },
+    {
+      "name": "release",
+      "color": "5319E7",
+      "description": "Release preparation or promotion"
+    },
+    {
+      "name": "skip-changelog",
+      "color": "EEEEEE",
+      "description": "Reviewer agreed no changelog entry is needed"
+    },
+    {
+      "name": "skip-docs",
+      "color": "EEEEEE",
+      "description": "Reviewer agreed no documentation change is needed"
+    }
+  ],
+  "remove": [
+    "bug",
+    "documentation",
+    "duplicate",
+    "enhancement",
+    "invalid",
+    "question",
+    "wontfix"
+  ]
+}
