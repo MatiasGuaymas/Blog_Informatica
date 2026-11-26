@@ -8,6 +8,12 @@ Every entry ends with its pull request number and the GitHub handle of its autho
 
 ## [Unreleased]
 
+### Added
+
+- Git hooks with lefthook: Biome on staged files, file-size limits, a branding guard, and Conventional Commits in English for commit messages. #3 @MatiasGuaymas
+- GitHub Actions for CI (lint, typecheck, repository checks, build), pull request checks (title, docs and changelog), security scans (dependency audit, dependency review, secret scan) and automatic tags and GitHub Releases from `main`. #3 @MatiasGuaymas
+- Dependabot for npm and GitHub Actions, CODEOWNERS, a pull request template, issue forms for epics, features and bugs, and the label taxonomy. #3 @MatiasGuaymas
+
 ### Security
 
 - Upgraded Next.js from 16.2.4 to 16.4.6 and patched `sanitize-html` (XSS through raw-text elements), `zod`, `postcss` and transitive dependencies; `pnpm audit` reports no known vulnerabilities. #2 @MatiasGuaymas

@@ -1,0 +1,14 @@
+# Normalize line endings to LF for every text file.
+* text=auto eol=lf
+
+# Binary assets.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
+*.woff2 binary
+
+# Keep both sides when two branches add changelog entries in the same place
+# (applies to local merges and rebases).
+CHANGELOG.md merge=union

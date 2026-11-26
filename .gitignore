@@ -1,41 +1,40 @@
-# Env files (never commit secrets)
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Next.js and build output
+.next/
+out/
+build/
+dist/
+.turbo/
+*.tsbuildinfo
+
+# Environment files (never commit secrets)
 .env
 .env.*
 !.env.example
 
-# OS / editor
-.DS_Store
-.idea/
-.vscode/*
-!.vscode/settings.json
-!.vscode/extensions.json
-.cursor/*
-!.cursor/skills
-
-# Logs
-*.log
-npm-debug.log*
-pnpm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Node / Next.js
-node_modules/
-.pnpm-store/
-.next/
-.turbo/
-dist/
-build/
-
-# TypeScript
-*.tsbuildinfo
-
 # Vercel
 .vercel
 
-# Restore / temp
-.restore/
+# Logs
+*.log
 
-# Claude
+# Playwright
+/test-results/
+/playwright-report/
+
+# OS and editors
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Claude Code: personal files only (the team configuration is committed)
 .claude/*
-!.claude/.gitkeep
+CLAUDE.local.md
+
+# Archives
+*.zip
