@@ -1,12 +1,12 @@
 import { ImageResponse } from "next/og";
 import { SITE } from "@/lib/site";
 
-// Imagen Open Graph default del sitio (1200x630). Se sirve desde
-// /opengraph-image y se referencia desde el metadata de cada página.
-// Como es server-side, usa style props de React no Tailwind (no hay JS
-// runtime para clases utilities).
+// Default Open Graph image of the site (1200x630), served at
+// /opengraph-image and referenced from every page's metadata. It renders
+// on the server with React style props instead of Tailwind classes. It
+// uses the default Node.js runtime (the Edge runtime is deprecated), so
+// Next.js prerenders it at build time.
 
-export const runtime = "edge";
 export const alt = SITE.name;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
