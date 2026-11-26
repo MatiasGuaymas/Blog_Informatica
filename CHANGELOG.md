@@ -8,7 +8,13 @@ Every entry ends with its pull request number and the GitHub handle of its autho
 
 ## [Unreleased]
 
+### Security
+
+- Upgraded Next.js from 16.2.4 to 16.4.6 and patched `sanitize-html` (XSS through raw-text elements), `zod`, `postcss` and transitive dependencies; `pnpm audit` reports no known vulnerabilities. #2 @MatiasGuaymas
+
 ### Changed
+
+- The Open Graph image uses the Node.js runtime and is prerendered at build time, because the Edge runtime is deprecated. #2 @MatiasGuaymas
 
 - Formatted the codebase with Biome (2-space indentation) and sorted imports consistently. #1 @MatiasGuaymas
 
