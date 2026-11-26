@@ -8,6 +8,14 @@ Every entry ends with its pull request number and the GitHub handle of its autho
 
 ## [Unreleased]
 
+### Added
+
+- Subject pages support seven editorial sections (format, study material, personal take, recommendations, bibliography, how the material is organized and useful links), each shown only when it has content. #62 @MatiasGuaymas
+
+### Changed
+
+- On subject pages, the general links section is now titled "Links útiles", and "Material" lists the study material. #62 @MatiasGuaymas
+
 ## [0.2.0] - 2026-11-26
 
 ### Added
