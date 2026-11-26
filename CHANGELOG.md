@@ -10,6 +10,8 @@ Every entry ends with its pull request number and the GitHub handle of its autho
 
 ### Added
 
+- English documentation: README, CONTRIBUTING and SECURITY; architecture with diagrams; ten feature pages with user stories, Gherkin acceptance criteria and use cases; guides for setup, git workflow, tasks, specs, Claude Code, design and releases; decision records, epic briefs and a glossary. #59 @MatiasGuaymas
+- Design context for the design skills (`PRODUCT.md`, `DESIGN.md`) and project skills for frontend development, debugging and browser verification. #59 @MatiasGuaymas
 - Claude Code setup shared through the repository: rules in `AGENTS.md` (imported by `CLAUDE.md`), team settings, tested hooks that enforce the workflow, and project skills for the git workflow, task management, feature specs, changelog, releases and documentation. #57 @MatiasGuaymas
 - Twenty reviewed third-party agent skills for design, motion, React performance, security audits, collaboration and user stories, vendored with their licenses. #57 @MatiasGuaymas
 - Git hooks with lefthook: Biome on staged files, file-size limits, a branding guard, and Conventional Commits in English for commit messages. #3 @MatiasGuaymas
@@ -22,6 +24,7 @@ Every entry ends with its pull request number and the GitHub handle of its autho
 
 ### Changed
 
+- The file-size allowlist links each oversized file to the issue that tracks its split, and git ignores iCloud Drive conflict copies. #59 @MatiasGuaymas
 - The Open Graph image uses the Node.js runtime and is prerendered at build time, because the Edge runtime is deprecated. #2 @MatiasGuaymas
 - Formatted the codebase with Biome (2-space indentation) and sorted imports consistently. #1 @MatiasGuaymas
 
