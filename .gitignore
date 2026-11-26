@@ -32,9 +32,15 @@ dist/
 !.vscode/extensions.json
 !.vscode/settings.json
 
-# Claude Code: personal files only (the team configuration is committed)
-.claude/*
+# Claude Code: personal files only (the team configuration in .claude/ is committed)
+.claude/settings.local.json
+.claude/worktrees/
+# Vendored without its 37 MB sample media; see .claude/skills/THIRD-PARTY.md
+.claude/skills/design-taste-frontend/assets/
 CLAUDE.local.md
+.superpowers/
+.taste-skill/
+.impeccable/
 
 # Archives
 *.zip

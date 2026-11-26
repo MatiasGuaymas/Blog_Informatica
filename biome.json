@@ -14,7 +14,9 @@
       "!dist",
       "!build",
       "!public",
-      "!**/generated"
+      "!**/generated",
+      "!.claude/skills",
+      "!skills-lock.json"
     ]
   },
   "formatter": {

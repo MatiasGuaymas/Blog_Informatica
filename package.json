@@ -10,11 +10,12 @@
     "lint": "biome check",
     "format": "biome format --write",
     "typecheck": "tsc --noEmit",
-    "check": "pnpm lint && pnpm typecheck && pnpm check:terms && pnpm check:lines",
+    "check": "pnpm lint && pnpm typecheck && pnpm check:terms && pnpm check:lines && pnpm test:hooks",
     "check:terms": "node scripts/check-forbidden-terms.mjs --all",
     "check:lines": "node scripts/check-file-lines.mjs --all",
     "labels:sync": "node scripts/github/sync-labels.mjs",
-    "prepare": "node scripts/install-git-hooks.mjs"
+    "prepare": "node scripts/install-git-hooks.mjs",
+    "test:hooks": "node --test \".claude/hooks/tests/*.test.mjs\""
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",

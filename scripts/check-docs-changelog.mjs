@@ -22,9 +22,12 @@ const labels = new Set(
 const author = env.PR_AUTHOR ?? "";
 const pr = env.PR_NUMBER ?? "";
 
-if (env.BASE_REF === "main" && env.HEAD_REF === "dev") {
+if (
+  (env.BASE_REF === "main" && env.HEAD_REF === "dev") ||
+  (env.BASE_REF === "dev" && env.HEAD_REF === "main")
+) {
   console.log(
-    "Release promotion: every change was checked when it reached dev.",
+    "Release promotion or hotfix back-merge: the changes were checked on their way in.",
   );
   process.exit(0);
 }
@@ -50,7 +53,7 @@ if (!labels.has("skip-changelog") && !labels.has("release")) {
     if (added.length === 0)
       errors.push("CHANGELOG.md changed but no entry was added.");
     for (const line of added) {
-      if (!/#\d+ @[A-Za-z0-9-]+(\[bot\])?\s*$/.test(line)) {
+      if (!/#\d+( @[A-Za-z0-9-]+(\[bot\])?)+\s*$/.test(line)) {
         errors.push(
           `Entry must end with "#<PR> @<author>": ${line.slice(1).trim()}`,
         );
@@ -67,7 +70,9 @@ const sourceChanged = changed.some(
     /^src\/.+\.(ts|tsx|css)$/.test(file) && !/\.(test|spec)\.tsx?$/.test(file),
 );
 const docsChanged = changed.some(
-  (file) => file.startsWith("docs/") || file === "README.md",
+  (file) =>
+    (file.startsWith("docs/") && !file.startsWith("docs/plans/")) ||
+    file === "README.md",
 );
 if (sourceChanged && !docsChanged && !labels.has("skip-docs")) {
   errors.push(
