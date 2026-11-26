@@ -119,6 +119,16 @@ The site also serves `/sitemap.xml`, `/robots.txt`, `/manifest.webmanifest`,
 User-facing capabilities by month, newest first. From version 0.1.0 on, the
 [CHANGELOG](../CHANGELOG.md) records every change.
 
+### 2026-11-26 - Version 0.2.0
+
+A security and quality release. The site moves to Next.js 16.4 with every
+known vulnerability in its production dependencies patched, including an XSS
+issue in the sanitizer that cleans the notice board HTML. Screen readers now
+announce the loading indicator and the calendar category dots, and the Open
+Graph image is generated at build time. Behind the scenes, the project gains
+protected branches, automated checks and releases, and complete English
+documentation.
+
 ### 2026-11-26 - Version 0.1.0
 
 First versioned release, published as the baseline of the site running in
